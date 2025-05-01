@@ -51,7 +51,7 @@ npm install
 
 ### ✅ Step 4: Create a .env File
 
-Add api key
+Add api key <br>
 VITE_OPENWEATHER_API_KEY= your_openweathermap_api_key
 
 ### ✅ Step 5: Run the Development Server
