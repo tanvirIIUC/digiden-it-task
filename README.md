@@ -1,54 +1,60 @@
-# React + TypeScript + Vite
+# 🌦️ WeatherHUNT - Real-Time Weather Forecast App with Map & Dark Mode
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**WeatherHUNT** is a modern weather forecast app built with **React**, **TypeScript**, **Redux Toolkit**, and **Tailwind CSS**. It uses the **OpenWeatherMap API** to fetch real-time weather data, includes an interactive map using **Leaflet**, and supports a clean **Dark Mode** interface.
 
-Currently, two official plugins are available:
+🔗 **Live Demo**: [https://your-live-site-url.com](https://your-live-site-url.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🔍 Real-time weather search by city  
+- 🧠 Autocomplete suggestions from search history  
+- 💾 Persisted search history with `localStorage`  
+- 🗺️ Interactive city map using Leaflet  
+- 🌓 Dark Mode toggle  
+- ❌ Clear history functionality  
+- ⚛️ State management with Redux Toolkit  
+- 🎨 Fully responsive UI with Tailwind CSS  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧰 Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **React** + **TypeScript**  
+- **Redux Toolkit**  
+- **Tailwind CSS**  
+- **React Leaflet**  
+- **OpenWeatherMap API**  
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 🛠️ Installation & Setup Guide
+
+Follow these steps to run the project locally:
+
+### ✅ Step 1: Clone the Repository
+
+git clone [https://github.com/tanvirIIUC/digiden-it-task](https://github.com/tanvirIIUC/digiden-it-task)
+cd weatherhunt
+
+### ✅ Step 2: Install Dependencies
+
+npm install
+
+### ✅ Step 3: Get Your OpenWeatherMap API Key
+
+1. Visit: [https://openweathermap.org/api](https://openweathermap.org/api)
+2. Create a free account or sign in  
+3. Generate an API key under your account  
+4. Copy the API key
+
+### ✅ Step 4: Create a .env File
+
+Add api key
+VITE_OPENWEATHER_API_KEY= your_openweathermap_api_key
+
+### ✅ Step 5: Run the Development Server
+
+npm run dev
+

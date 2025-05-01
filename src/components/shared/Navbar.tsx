@@ -1,20 +1,22 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, FC } from "react";
 import { useDispatch } from "react-redux";
 import { useGetWeather } from "../../hooks/useGetWeather";
 import { fetchWeatherData, WeatherData } from "../../redux/features/getWeatherDataSlice";
 import { AppDispatch } from "../../redux/store";
-import { MdOutlineDarkMode } from "react-icons/md";
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
 
-const Navbar = () => {
+interface NavbarProps {
+    isDarkMode: boolean;
+    setIsDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+
+const Navbar: FC<NavbarProps>  = ({isDarkMode,setIsDarkMode}) => {
+
     const [searchName, setSearchName] = useState("");
     const [city, setCity] = useState("dhaka");
     const [searchHistory, setSearchHistory] = useState<string[]>([]);
     const [isInputFocused, setIsInputFocused] = useState(false);
-
     const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-    /////redux
-    // const dispatch = useDispatch();
     const dispatch = useDispatch<AppDispatch>();
     const { data } = useGetWeather(city);
 
@@ -29,11 +31,10 @@ const Navbar = () => {
             dispatch(fetchWeatherData(data as WeatherData));
         }
     }, [dispatch, data]);
-    
+
 
     const handleSearch = () => {
         if (!searchName.trim()) return;
-
         setCity(searchName);
 
         // Add to search history (localStorage)
@@ -48,7 +49,7 @@ const Navbar = () => {
     const handleHistoryClick = (city: string) => {
         setSearchName(city);
         setCity(city);
-         setIsInputFocused(false);
+        setIsInputFocused(false);
     };
 
     const handleClearHistory = () => {
@@ -60,7 +61,25 @@ const Navbar = () => {
 
     const handleInputFocus = () => setIsInputFocused(true);
 
+useEffect(()=>{
+   
+    const theme = localStorage.getItem("theme");
+    if(!theme){
+        localStorage.setItem("theme", "light");
+    }
+},[])
 
+    // Toggle dark mode
+    const handleToggle = () => {
+        setIsDarkMode(!isDarkMode);
+        if (!isDarkMode) {
+            localStorage.setItem("theme", "dark");
+          
+        } else {
+            localStorage.setItem("theme", "light");
+           
+        }
+    };
     return (
         <div className="top-0 fixed w-full z-10 flex lg:flex-row justify-between items-center flex-col p-4 px-10 text-white bg-gray-900 gap-4">
             <div>
@@ -69,12 +88,28 @@ const Navbar = () => {
                 </h1>
             </div>
             <div className="relative flex gap-3 items-center">
-                <MdOutlineDarkMode width={50} height={50}/>
+                {
+                    isDarkMode ?
+                        <button
+                            onClick={handleToggle}
+                            className=" cursor-pointer text-white p-2 rounded-full"
+                        >
+                            <MdOutlineDarkMode className="w-6 h-6"/>
+                        </button>
+                        :
+                        <button
+                            onClick={handleToggle}
+                            className="cursor-pointer text-white p-2 rounded-full"
+                        >   
+                            <MdDarkMode className="w-6 h-6" />
+                        </button>
+                }
+
                 <input
                     onChange={(e) => setSearchName(e.target.value)}
                     value={searchName}
                     onFocus={handleInputFocus}
-                   
+
                     className="rounded-sm border px-2 py-1 bg-white text-black"
                     type="text"
                     placeholder="Search city..."
@@ -86,10 +121,9 @@ const Navbar = () => {
                     Search
                 </button>
 
-                {/* Show dropdown with suggestions when input is focused and has search history */}
                 {isInputFocused && searchHistory.length > 0 && (
                     <div
-                        ref={dropdownRef} 
+                        ref={dropdownRef}
                         className="absolute top-full mt-2 w-full bg-white border rounded-lg shadow-lg z-10 max-h-60 overflow-y-auto pb-2"
                     >
                         <ul className="space-y-1">
