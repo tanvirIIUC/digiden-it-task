@@ -35,7 +35,7 @@ Follow these steps to run the project locally:
 
 ### ✅ Step 1: Clone the Repository
 
-git clone [https://github.com/tanvirIIUC/digiden-it-task](https://github.com/tanvirIIUC/digiden-it-task)
+git clone [https://github.com/tanvirIIUC/digiden-it-task](https://github.com/tanvirIIUC/digiden-it-task) <br>
 cd weatherhunt
 
 ### ✅ Step 2: Install Dependencies
