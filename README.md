@@ -2,7 +2,7 @@
 
 **WeatherHUNT** is a modern weather forecast app built with **React**, **TypeScript**, **Redux Toolkit**, and **Tailwind CSS**. It uses the **OpenWeatherMap API** to fetch real-time weather data, includes an interactive map using **Leaflet**, and supports a clean **Dark Mode** interface.
 
-🔗 **Live Demo**: [https://your-live-site-url.com](https://your-live-site-url.com)
+🔗 **Live Demo**: [https://digiden-it-task.vercel.app/](https://digiden-it-task.vercel.app/)
 
 ---
 
