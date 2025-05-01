@@ -3,16 +3,17 @@ import WeatherMap from "../../components/weatherMap/WeatherMap";
 import { RootState } from "../../redux/store";
 
 const Home = () => {
-    // const { weatherData, loading, error } = useSelector((state) => state.weatherData);
     const { weatherData, loading, error } = useSelector((state: RootState) => state.weatherData);
-    const lat = weatherData?.coord?.lat ?? 0; // Ensure lat is a number
-    const lon = weatherData?.coord?.lon ?? 0; // Ensure lon is a number
-    const city = weatherData?.name ?? ''; // Default to empty string if city is undefined
+    const lat = weatherData?.coord?.lat ?? 0; 
+    const lon = weatherData?.coord?.lon ?? 0;
+    const city = weatherData?.name ?? '';
     if (loading) {
-        return <div>
-            <p>Loading.......</p>
-        </div>
-    }
+        return (
+          <div className="flex justify-center items-center h-screen">
+            <div className="border-t-4 border-blue-500 border-solid rounded-full w-16 h-16 animate-spin"></div>
+          </div>
+        );
+      }
 
     if (error) {
         return <p className="text-red-600 font-semibold text-2xl text-center mt-10">Something went wrong.</p>
