@@ -16,10 +16,10 @@ const Home = () => {
       }
 
     if (error) {
-        return <p className="text-red-600 font-semibold text-2xl text-center mt-10">Something went wrong.</p>
+        return <p className="text-red-600 font-semibold text-2xl text-center pt-40">Something went wrong.</p>
     }
     if (weatherData?.cod === '404') {
-        return <p className="text-red-600 font-semibold text-2xl text-center mt-10">City not found.</p>
+        return <p className="text-red-600 font-semibold text-2xl text-center pt-40">City not found.</p>
     }
     return (<div className=" flex flex-col items-center lg:pt-20 pt-36">
         {weatherData?.main && (
